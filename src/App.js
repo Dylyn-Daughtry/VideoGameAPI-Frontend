@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     getAllGames();
-  })
+  }, [])
   
 
   async function getAllGames(prop){
