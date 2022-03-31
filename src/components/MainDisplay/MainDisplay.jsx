@@ -14,11 +14,6 @@ const MainDisplay = (props) => {
                     <th className='hname hcell'>Year</th>
                     <th className='hname hcell'>Genre</th>
                     <th className='hartist hcell'>Publisher</th>
-                    <th className='halbum hcell'>NA Sales</th>
-                    <th className='halbum hcell'>EU Sales</th>
-                    <th className='halbum hcell'>Japan Sales</th>
-                    <th className='halbum hcell'>Other Sales</th>
-                    <th className='hrd hcell'>Global Sales</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,13 +24,9 @@ const MainDisplay = (props) => {
                             <td className='artist tcell'>{game.rank}</td>
                             <td className='album tcell'>{game.name}</td>
                             <td className='release_date tcell'>{game.platform}</td>
+                            <td className='release_date tcell'>{game.year}</td>
                             <td className='genre tcell'>{game.genre}</td>
                             <td className='genre tcell'>{game.publisher}</td>
-                            <td className='genre tcell'>{game.northAmericaSales}</td>
-                            <td className='genre tcell'>{game.europeSales}</td>
-                            <td className='genre tcell'>{game.japanSales}</td>
-                            <td className='genre tcell'>{game.otherSales}</td>
-                            <td className='genre tcell'>{game.globalSales}</td>
                         </tr>
                     )
                 )}

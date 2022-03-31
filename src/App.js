@@ -3,17 +3,25 @@ import MainDisplay from './components/MainDisplay/MainDisplay';
 // import NavBar from './components/NavBar/NavBar';
 import './App.css'
 import axios from 'axios';
+import Modal from './components/Modal/Modal';
 import SearchBar from './components/SearchBar/SearchBar';
+import DisplayChart from './components/DisplayChart';
+import ChartButton from './components/ChartButton/ChartButton';
 
 
 function App() {
 
+  const[hideShow,setHideShow]=useState(false)
   const [games, setGames] = useState([]);
   const [displayGames, setDisplayGames] = useState([])
 
   useEffect(() => {
-    getAllGames();
-  }, [])
+    if (hideShow === false) getAllGames();
+  }, [hideShow])
+
+  const handleHideShow = () =>{
+    setHideShow(!hideShow)
+}
   
 
   async function getAllGames(prop){
@@ -41,7 +49,8 @@ function App() {
     <div>
         
         <SearchBar filterGames={filterGames}/>
-      
+        <ChartButton/>
+        <Modal onClick={handleHideShow}hideShow={hideShow}><DisplayChart DisplayChart={DisplayChart}/></Modal>
         <MainDisplay games={displayGames}/>
         
     </div>

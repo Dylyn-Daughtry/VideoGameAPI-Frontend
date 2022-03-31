@@ -6,7 +6,7 @@ export const options = {
   legend: { position: "top" },
 };
 
-export function Chart(props) {
+export default function DisplayChart(props) {
     const diffdata = [["Country","Sales"],
     ["North America", props.northAmericanSales],
     ["Japan",props.japaneseSales],
