@@ -17,7 +17,7 @@ function App() {
   
 
   async function getAllGames(prop){
-    let response = await axios.get('http://localhost:5260/api/games/');
+    let response = await axios.get('https://localhost:44386/api/games');
     setGames(response.data);
     setDisplayGames(response.data)
     console.log(response.data)
@@ -26,7 +26,7 @@ function App() {
   const filterGames = (searchterm) => {
     
     let matchingGames = games.filter((game) => {
-      if(game.title.toLowerCase().includes(searchterm.toLowerCase()))
+      if(game.name.toLowerCase().includes(searchterm.toLowerCase()))
         
       return true
     
