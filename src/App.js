@@ -5,6 +5,7 @@ import './App.css'
 import axios from 'axios';
 import SearchBar from './components/SearchBar/SearchBar';
 
+
 function App() {
 
   const [games, setGames] = useState([]);
@@ -40,7 +41,9 @@ function App() {
     <div>
         
         <SearchBar filterGames={filterGames}/>
+      
         <MainDisplay games={displayGames}/>
+        
     </div>
   );
   }
