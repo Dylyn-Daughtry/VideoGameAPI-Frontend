@@ -1,3 +1,4 @@
+import { isContentEditable } from "@testing-library/user-event/dist/utils";
 import React from "react";
 import { Chart } from "react-google-charts";
 
@@ -16,7 +17,7 @@ const DisplayChart = ({videoGames}) => {
 
       let platforms = filteredGames.map(game => {
         return game.platform
-      });
+      })
 
       console.log('Platforms' , platforms)
 
@@ -27,11 +28,21 @@ const DisplayChart = ({videoGames}) => {
       let platformArrays = distinctPlatform.map(platform => {
 
         let allGamesForPlatform = filteredGames.filter(game =>game.platform==platform);
+
+        for (allGamesForPlatform in videoGames){
+          const items = videoGames[idx];
+          content.push(<li key={items.id}>{items.videoGames}</li>);
+          return content;
+        };
+
+        return[platform,<ul>{allGamesForPlatform(videoGames)}</ul>,"silver"]
+
+        
         //loop through all gamesfor platform and sum each games for global sales, once we achieve the sum we need to put it in the return.       
 
-        return [platform,10,"silver"]
-      });
-
+       
+      
+      }
       console.log('PlatformArrays', platformArrays)
 
       
