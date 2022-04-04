@@ -49,8 +49,7 @@ function App() {
     <div>
         
         <SearchBar filterGames={filterGames}/>
-        <ChartButton/>
-        <Modal onClick={handleHideShow}hideShow={hideShow}><DisplayChart DisplayChart={DisplayChart}/></Modal>
+        <ChartButton games={displayGames}/>
         <MainDisplay games={displayGames}/>
         
     </div>

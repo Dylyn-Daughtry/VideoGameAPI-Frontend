@@ -21,7 +21,7 @@ const ChartButton = (props) => {
                 <span></span>
                 <h1 onClick={handleHideShow}>Show Chart</h1>
             </a>
-        <Modal onClick={handleHideShow}hideshow={hideShow}><DisplayChart/></Modal>
+        <Modal onClick={handleHideShow} hideShow={hideShow}><DisplayChart games={props.games}/></Modal>
         </div>
     )
 }

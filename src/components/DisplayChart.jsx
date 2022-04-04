@@ -4,13 +4,13 @@ import { Chart } from "react-google-charts";
 
 
 
-const DisplayChart = ({videoGames}) => {
+const DisplayChart = (props) => {
 
   function generateDataForChart(){
 
-      console.log(videoGames);
+      console.log(props.games);
 
-      let filteredGames = videoGames.filter(game => game.year > 2013);
+      let filteredGames = props.games.filter(game => game.year > 2013);
 
       console.log('Filtered Games', filteredGames)
 
@@ -27,36 +27,32 @@ const DisplayChart = ({videoGames}) => {
       let platformArrays = distinctPlatform.map(platform => {
 
         let allGamesForPlatform = filteredGames.filter(game =>game.platform==platform);
-
-        for (allGamesForPlatform in videoGames){
-          let index = 0
-          let content = []
-          const items = videoGames[index];
-          content.push(<li key={items.id}>{items.videoGames}</li>);
-          index += 1
-          return content;
+        let content = []
+        for (let i = 0; i < allGamesForPlatform.length; i++){
+          content.push(allGamesForPlatform[i].globalSales);
         }
-         return[platform,<ul>{allGamesForPlatform(videoGames)}</ul>,"silver"]
+         return[platform,content,"silver"]
       });
        
       
         
-        //loop through all gamesfor platform and sum each games for global sales, once we achieve the sum we need to put it in the return.       
+        // loop through all gamesfor platform and sum each games for global sales, once we achieve the sum we need to put it in the return.       
 
        
-      
-        // close to generateDataForChart function
+      // close to generateDataForChart function
       console.log('PlatformArrays', platformArrays)
 
       
       const data = [
-          ["Platform", "Sales", { role: "style" }],
+          ["Platform", "Sales",{role: "style"}], 
           ...platformArrays
         ];
 
         console.log('Data',data)
         
         return data;
+
+
   }
   return(
       <div>
