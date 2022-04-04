@@ -2,26 +2,54 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 
-export const options = {
-  legend: { position: "top" },
-};
 
-export default function DisplayChart(props) {
-    const diffdata = [["Country","Sales"],
-    ["North America", props.northAmericanSales],
-    ["Japan",props.japaneseSales],
-    ["Europe",props.europeSales],
-    ["otherSales",props.otherSales],
-    ["globalSales",props.globalSales]
-    
-]
-  return (
-    <Chart
-      chartType="BarChart"
-      width="100%"
-      height="400px"
-      diffdata={diffdata}
-      options={options}
-    />
-  );
+
+const DisplayChart = ({videoGames}) => {
+
+  function generateDataForChart(){
+
+      console.log(videoGames);
+
+      let filteredGames = videoGames.filter(game => game.year > 2013);
+
+      console.log('Filtered Games', filteredGames)
+
+      let platforms = filteredGames.map(game => {
+        return game.platform
+      });
+
+      console.log('Platforms' , platforms)
+
+      let distinctPlatform = [...new Set(platforms)]
+
+      console.log('Distinct Platforms',distinctPlatform)
+
+      let platformArrays = distinctPlatform.map(platform => {
+
+        let allGamesForPlatform = filteredGames.filter(game =>game.platform==platform);
+        //loop through all gamesfor platform and sum each games for global sales, once we achieve the sum we need to put it in the return.       
+
+        return [platform,10,"silver"]
+      });
+
+      console.log('PlatformArrays', platformArrays)
+
+      
+      const data = [
+          ["Platform", "Sales", { role: "style" }],
+          ...platformArrays
+        ];
+
+        console.log('Data',data)
+        
+        return data;
+  }
+  return(
+      <div>
+          <h1>Platform By Global Sales in Millions </h1>
+          <Chart chartType="ColumnChart" width="100%" height="400px" data={generateDataForChart()} />
+      </div>
+  )
 }
+
+export default DisplayChart;
